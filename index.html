@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japhet Ondicho Akuma | Architect</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="100" x="50" fill="%23ffffff" opacity="0.03"/><rect width="100" height="1" y="50" fill="%23ffffff" opacity="0.03"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #c5c5c5;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+            color: #a0a0a0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: transparent;
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid #fff;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: #fff;
+            color: #1a1a1a;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #666;
+        }
+
+        section {
+            padding: 100px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #1a1a1a;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 5rem;
+            font-weight: 700;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .journey {
+            background: #f8f8f8;
+        }
+
+        .journey-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .journey-item {
+            margin-bottom: 40px;
+            padding-left: 30px;
+            border-left: 3px solid #1a1a1a;
+        }
+
+        .journey-item h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .journey-item .year {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .journey-item p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .philosophy {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .philosophy h2::after {
+            background: #fff;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .philosophy-card {
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .philosophy-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .philosophy-card p {
+            line-height: 1.8;
+            color: #c5c5c5;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .project-card {
+            background: #f8f8f8;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: scale(1.02);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .project-info {
+            padding: 30px;
+        }
+
+        .project-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .project-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-info p {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .contact {
+            background: #f8f8f8;
+        }
+
+        .contact h2 {
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info-left h3,
+        .contact-form-right h3 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+        }
+
+        .contact-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        .contact-item p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .contact-item a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #666;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            background: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1a1a1a;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: #333;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 40px 5%;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .about-grid,
+            .projects-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">JOA</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>JAPHET ONDICHO AKUMA</h1>
+            <p class="subtitle">Architect | Visionary | Founder</p>
+            <p class="tagline">Transforming Africa's built environment through innovative design solutions that bridge tradition and modernity</p>
+            <a href="#projects" class="cta-button">VIEW MY WORK</a>
+        </div>
+    </div>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-grid">
+            <div class="about-image">JA</div>
+            <div class="about-content">
+                <h3>Building Dreams, Shaping Futures</h3>
+                <p>Born and raised in Kisii, my journey into architecture began with a simple fascination: how spaces shape human experiences. From the rolling hills of my hometown to the classrooms of Kapsabet High School, I observed how environment influences behavior, culture, and opportunity.</p>
+                <p>This curiosity led me to the Technical University of Kenya (TUK), where I pursued a degree in Architecture. There, I didn't just learn to design buildings—I learned to solve problems, to listen to communities, and to envision futures where structures serve as catalysts for transformation.</p>
+                <p>Upon graduation, I founded Archabitive, driven by a singular mission: to prove that African architects can compete and excel on the global stage while remaining deeply rooted in local context and community needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="journey" class="journey">
+        <h2>My Journey</h2>
+        <div class="journey-content">
+            <div class="journey-item">
+                <h4>The Beginning - Kisii</h4>
+                <p class="year">Early Years</p>
+                <p>Growing up in Kisii, I was surrounded by organic architecture—homes built from local materials, structures that responded to climate and terrain. This early exposure taught me that great design doesn't require expensive materials; it requires understanding and respect for context.</p>
+            </div>
+            <div class="journey-item">
+                <h4>Education - Kapsabet to TUK</h4>
+                <p class="year">2012 - 2019</p>
+                <p>At Kapsabet High School, I excelled in technical drawing and mathematics, finding joy in translating ideas into precise visual representations. This passion propelled me to TUK, where I immersed myself in architectural theory, sustainable design, and urban planning. My final year thesis explored affordable housing solutions for rapidly urbanizing communities—a theme that continues to drive my work today.</p>
+            </div>
+            <div class="journey-item">
+                <h4>Founding Archabitive</h4>
+                <p class="year">2020</p>
+                <p>Shortly after graduating, I took a leap of faith and founded Archabitive. The name combines "architecture" with "initiative"—reflecting my belief that architects must be proactive problem-solvers, not passive service providers. With a small but talented team, we began taking on projects that others overlooked: small residential renovations, community centers, and micro-commercial spaces. Each project taught us invaluable lessons about client needs, construction realities, and business management.</p>
+            </div>
+            <div class="journey-item">
+                <h4>Growth & Vision</h4>
+                <p class="year">2020 - Present</p>
+                <p>Today, Archabitive has grown to a team of six specialists, working across residential, commercial, and institutional sectors. But our ambition extends far beyond Kenya's borders. We're actively pursuing international collaborations, showcasing that African architectural firms can deliver world-class design while maintaining competitive pricing and deep cultural insight. Every project we complete is a statement: Africa belongs at the table of global architecture.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy" class="philosophy">
+        <h2>Design Philosophy</h2>
+        <div class="philosophy-grid">
+            <div class="philosophy-card">
+                <h3>Context-Driven Design</h3>
+                <p>Every project begins with listening—to the site, the client, and the community. I believe great architecture emerges from deep understanding of local climate, culture, materials, and aspirations. Generic solutions have no place in my practice.</p>
+            </div>
+            <div class="philosophy-card">
+                <h3>Sustainable Innovation</h3>
+                <p>Sustainability isn't a trend; it's a responsibility. I integrate passive design strategies, local materials, and energy-efficient systems into every project. Modern doesn't mean wasteful—it means intelligent.</p>
+            </div>
+            <div class="philosophy-card">
+                <h3>Human-Centered Spaces</h3>
+                <p>Buildings are for people. Whether designing a family home or a commercial complex, I prioritize how spaces will be lived in, worked in, and experienced. Aesthetics matter, but functionality and emotional resonance matter more.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">01</div>
+                <div class="project-info">
+                    <h3>The Riverside Residence</h3>
+                    <p class="project-meta">Residential | Nairobi, Kenya | 2023</p>
+                    <p>A contemporary family home that seamlessly blends indoor and outdoor living spaces. Designed with large openings to capture natural light and ventilation, the residence features locally sourced stone and timber, creating a warm, sustainable environment. The project demonstrates how modern design can honor traditional Kenyan craftsmanship.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">02</div>
+                <div class="project-info">
+                    <h3>Greenview Commercial Plaza</h3>
+                    <p class="project-meta">Commercial | Thika, Kenya | 2022</p>
+                    <p>A mixed-use development featuring retail spaces on the ground floor and offices above. The design prioritizes pedestrian experience with covered walkways and landscaped courtyards. Solar panels and rainwater harvesting systems reduce operational costs while supporting environmental sustainability.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">03</div>
+                <div class="project-info">
+                    <h3>Hope Primary School Extension</h3>
+                    <p class="project-meta">Institutional | Kisii, Kenya | 2021</p>
+                    <p>An expansion project for my hometown's primary school, adding four classrooms and a library. Working within a tight budget, we used local materials and community labor to create bright, well-ventilated learning spaces. The project proves that quality educational infrastructure doesn't require exorbitant budgets—just thoughtful design and community collaboration.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">04</div>
+                <div class="project-info">
+                    <h3>Urban Loft Renovation</h3>
+                    <p class="project-meta">Residential | Nairobi, Kenya | 2023</p>
+                    <p>Transformation of a 1970s apartment into a modern urban loft. By removing non-structural walls and introducing mezzanine levels, we maximized vertical space in the compact unit. Industrial finishes pay homage to the building's original character while contemporary furnishings create a fresh, livable atmosphere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Let's Build Something Together</h2>
+        <div class="contact-grid">
+            <div class="contact-info-left">
+                <h3>Get In Touch</h3>
+                <div class="contact-item">
+                    <h4>Email</h4>
+                    <a href="mailto:japhet@archabitive.com">japhet@archabitive.com</a>
+                </div>
+                <div class="contact-item">
+                    <h4>Phone</h4>
+                    <a href="tel:+254700000000">+254 700 000 000</a>
+                </div>
+                <div class="contact-item">
+                    <h4>Location</h4>
+                    <p>Thika, Nairobi County, Kenya</p>
+                </div>
+                <div class="contact-item">
+                    <h4>Company</h4>
+                    <p>Co-Founder & Lead Architect<br>Archabitive Architectural Company</p>
+                </div>
+            </div>
+            <div class="contact-form-right">
+                <h3>Send a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Your Phone">
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="">Project Type</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="institutional">Institutional</option>
+                            <option value="consultation">Consultation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Tell me about your project..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Japhet Ondicho Akuma. All rights reserved. | Designing Africa's Future, One Project at a Time.</p>
+    </footer>
+</body>
+</html>
